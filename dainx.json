@@ -1,0 +1,40 @@
+import requests
+url = "https://discord.com/api/v8/applications/914474679044046869/commands"
+json = {
+    "name": "High Five",
+    "type": 1,
+    "description": "Send a random animal photo",
+    "option": [
+        {
+            "name": "animal",
+            "description": "The type of animal",
+            "type": 3,
+            "required": True,
+            "choices": [
+                {
+                    "name": "Dog",
+                    "value": "animal_dog"
+                },
+                {
+                    "name": "Cat",
+                    "value": "animal_cat"
+                },
+                {
+                    "name": "Penguin",
+                    "value": "animal_penguin"
+                }
+            ]
+        },
+        {
+            "name": "only_smol",
+            "description": "Whether to show only baby animals",
+            "type": 5,
+            "required": False
+        }
+    ]
+}
+headers = {
+        "Authorization": "Bot <my_bot_token>"
+}
+r = requests.post(url, headers=headers, json=json)
+        
